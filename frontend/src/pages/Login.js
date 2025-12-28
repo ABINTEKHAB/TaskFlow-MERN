@@ -28,7 +28,7 @@ const Login = () => {
 
         setIsLoading(true);
         try {
-            const res = await axios.post('http://127.0.0.1:8000/api/auth/login', { email, password });
+            const res = await axios.post('https://taskflow-mern-x0zu.onrender.com/api/auth/login', { email, password });
             localStorage.setItem('token', res.data.token);
             toast.success(`Welcome back, ${res.data.user.name}!`);
             navigate('/dashboard');

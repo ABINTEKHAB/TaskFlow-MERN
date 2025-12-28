@@ -11,7 +11,7 @@ const Dashboard = () => {
     const fetchTasks = async () => {
         try {
             const token = localStorage.getItem('token');
-            const res = await axios.get('http://localhost:8000/api/tasks', {
+            const res = await axios.get('https://taskflow-mern-x0zu.onrender.com/api/tasks', {
                 headers: { 'x-auth-token': token }
             });
             setTasks(res.data);
@@ -26,7 +26,7 @@ const Dashboard = () => {
         e.preventDefault();
         try {
             const token = localStorage.getItem('token');
-            await axios.post('http://localhost:8000/api/tasks', newTask, {
+            await axios.post('https://taskflow-mern-x0zu.onrender.com/api/tasks', newTask, {
                 headers: { 'x-auth-token': token }
             });
             setShowModal(false);
@@ -40,7 +40,7 @@ const Dashboard = () => {
     const updateTaskStatus = async (id, newStatus) => {
         try {
             const token = localStorage.getItem('token');
-            await axios.put(`http://localhost:8000/api/tasks/${id}`, { status: newStatus }, {
+            await axios.put(`https://taskflow-mern-x0zu.onrender.com/api/tasks/${id}`, { status: newStatus }, {
                 headers: { 'x-auth-token': token }
             });
             toast.success(`Moved to ${newStatus}`);
@@ -59,7 +59,7 @@ const Dashboard = () => {
                     <button 
                         onClick={async () => {
                             toast.dismiss(t.id);
-                            const deletePromise = axios.delete(`http://localhost:8000/api/tasks/${id}`, {
+                            const deletePromise = axios.delete(`https://taskflow-mern-x0zu.onrender.com/api/tasks/${id}`, {
                                 headers: { 'x-auth-token': localStorage.getItem('token') }
                             });
                             toast.promise(deletePromise, {
